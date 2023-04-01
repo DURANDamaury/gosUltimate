@@ -22,7 +22,7 @@ hauteurview = 134
 largeurZoom = 44
 hauteurZoom = 30
 
-love.window.setMode(1152, 1088,{borderless=true})
+love.window.setMode(1152, 808)
 
 -- Evite le flou merdique
 love.graphics.setDefaultFilter ("nearest", "nearest", 1)
@@ -51,7 +51,7 @@ function love.draw()
     quadView:setViewport(0,yview,192,134,gfx:getDimensions())
     love.graphics.draw(gfx,quadView,0,0,0,6,3)
     --WindowZoom
-    quadZoom:setViewport(xzoom,yzoom,44,30,gfx:getDimensions())
+    quadZoom:setViewport(xzoom,yview+yzoom,44,30,gfx:getDimensions())
     love.graphics.draw(gfx, quadZoom,0,yZoomWindow,0,24,12)
 
     cursorView()
