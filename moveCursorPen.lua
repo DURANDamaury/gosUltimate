@@ -1,5 +1,4 @@
 function moveCursorPen(key)
-    print('moveCursorPen')
     if love.keyboard.isDown("lctrl") then
         if key == "kp0" then
             if pen1 == 0 then        --On traite le cas si encre 0

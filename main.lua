@@ -8,12 +8,13 @@ require("./Cursors/cursorZoom")
 require("./Cursors/cursorPen0")
 require("./Cursors/cursorPen1")
 require("./Hud/hudInk")
+require("./Hud/RGBDiag")
 
 -- Valeurs d'initialisation
 --- Zoom View et curseurs
 coef = 2
 zoom = 6
-yZoomWindow = 448
+yZoomWindow = 450
 xzoom = 0
 yzoom = 0
 yview = 0
@@ -90,6 +91,7 @@ function love.draw()
     cursorView()
     cursorZoom()
     hudInk(palette)
+    RGBDiag(pen0,palette)
     cursorPen0(pen0)
     cursorPen1(pen1)
 end
