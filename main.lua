@@ -2,10 +2,11 @@
 require("moveView")
 require("moveZoom")
 require("moveCursorZoom")
+require("moveCursorPen")
 require("./Cursors/cursorView")
 require("./Cursors/cursorZoom")
-require("./Cursors/cursorInk0")
-require("./Cursors/cursorInk1")
+require("./Cursors/cursorPen0")
+require("./Cursors/cursorPen1")
 require("./Hud/hudInk")
 
 -- Valeurs d'initialisation
@@ -26,18 +27,32 @@ hauteurview = 134
 largeurZoom = 44
 hauteurZoom = 30
 --- Encres
-ink0 = 1 -- Encre d'écriture
-ink1 = 0 -- Encre d'éffacement
+pen0 = 1 -- Encre d'écriture
+pen1 = 0 -- Encre d'éffacement
+mode = 0
 
 palette = {
-    {4,236,236,255},
-    {4,4,236,255},
-    {4,4,124,255},
-    {4,124,236,255}
+    {0,0,239,255},
+    {0,235,239,255},
+    {123,235,239,255},
+    {0,125,239,255},
+    {239,235,239,255},
+    {0,0,123,255},
+    {0,0,0,255},
+    {238,138,0,255},
+    {123,125,0,255},
+    {123,0,0,255},
+    {239,235,0,255},
+    {239,125,123,255},
+    {123,235,0,255},
+    {239,235,123,255},
+    {0,125,0,255},
+    {123,125,239,255}
 }
 
 ------------------------------------------------------
 love.window.setMode(1152, 808)
+love.window.setTitle( "Graph'OS Ultimate édition" )
 
 -- Evite le flou merdique
 love.graphics.setDefaultFilter ("nearest", "nearest", 1)
@@ -53,6 +68,7 @@ function love.keypressed( key, scancode, isrepeat )
     -- on placera ici les touches sans répétitions    
     moveView(key)
     moveCursorZoom(key)
+    moveCursorPen(key)
 end
 
 -----------------------------------------------------------------------------------------
@@ -74,8 +90,8 @@ function love.draw()
     cursorView()
     cursorZoom()
     hudInk(palette)
-    cursorInk0(ink0)
-    cursorInk1(ink1)
+    cursorPen0(pen0)
+    cursorPen1(pen1)
 end
 
 
