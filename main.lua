@@ -7,10 +7,12 @@ require("./Cursors/cursorView")
 require("./Cursors/cursorZoom")
 require("./Cursors/cursorPen0")
 require("./Cursors/cursorPen1")
+-- hud
 require("./Hud/hudInk")
 require("./Hud/RGBDiag")
-require("RGBSet")
-
+require("./Hud/RGBSet")
+-- tools
+require("./Tools/pokePixel")
 -- Valeurs d'initialisation
 --- Zoom View et curseurs
 coef = 2
@@ -61,7 +63,8 @@ love.graphics.setDefaultFilter ("nearest", "nearest", 1)
 
 
 -- 
-gfx = love.graphics.newImage('Aquablue.png')
+--gfx = love.graphics.newImage('Aquablue.png')
+local gfx = love.image.newImageData('Aquablue.png')
 quadView = love.graphics.newQuad(0,yview,largeurView,hauteurview,gfx:getDimensions())
 quadZoom = love.graphics.newQuad(xzoom,yzoom,largeurZoom,hauteurZoom,gfx:getDimensions())
 
@@ -78,17 +81,18 @@ end
 function love.update()
     -- Touches à répétition
     moveZoom()
+    pokePixel(gfx)
 end
 -----------------------------------------------------------------------------------------
 function love.draw()
     --WindowView
     quadView:setViewport(0,yview,192,134,gfx:getDimensions())
-    love.graphics.draw(gfx,quadView,0,0,0,6,3)
+    love.graphics.draw(love.graphics.newImage(gfx),quadView,0,0,0,6,3)
     --Palette
 
     --WindowZoom
     quadZoom:setViewport(xzoom,yview+yzoom,44,30,gfx:getDimensions())
-    love.graphics.draw(gfx, quadZoom,0,yZoomWindow,0,24,12)
+    love.graphics.draw(love.graphics.newImage(gfx), quadZoom,0,yZoomWindow,0,24,12)
 
     cursorView()
     cursorZoom()

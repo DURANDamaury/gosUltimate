@@ -1,7 +1,7 @@
 function RGBSet(key,pen0,palette)
     local rgb = palette[pen0+1]
     local rouge = rgb[1]
-    local rouge15 = math.ceil(rouge/15)
+    local rouge15 = rouge/15
     local vert = rgb[2]
     local vert15 = vert/15
     local bleu = rgb[3]
